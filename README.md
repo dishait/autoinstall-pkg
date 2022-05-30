@@ -1,15 +1,12 @@
-# node-lib-template
+# autoinstall-pkg
 
-开箱即用的 `node` 库模板
+自动安装 `npm` 包
 
 <br />
 
 ## features 🦕
 
-- pnpm 的
-- vitest 测试
-- 开箱即用的
-- typescript 的
+TODO
 
 <br />
 <br />
@@ -19,49 +16,7 @@
 ### install
 
 ```shell
-pnpm i
-```
-
-### test
-
-```shell
-pnpm test
-
-# or pnpm test:watch
-```
-
-### build
-
-```shell
-pnpm build
-
-# pnpm build:esm 仅打包 esmodule
-# pnpm build:cjs 仅打包 commonjs
-# pnpm build:watch 监听式打包
-```
-
-### coverage
-
-```shell
-pnpm coverage
-```
-
-### dev
-
-```shell
-pnpm dev
-```
-
-### release
-
-```shell
-pnpm release
-```
-
-### play
-
-```shell
-pnpm play
+pnpm i autoinstall-pkg -D
 ```
 
 <br />
@@ -69,7 +24,7 @@ pnpm play
 
 ## License
 
-Made with [name](https://github.com/name)
+Made with [markthree](https://github.com/markthree)
 
 Published under [MIT License](./LICENSE).
 

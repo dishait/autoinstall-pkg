@@ -7,5 +7,5 @@ export default defineConfig({
 	splitting: true,
 	outDir: 'dist',
 	format: ['cjs', 'esm'],
-	entry: ['src/index.ts']
+	entry: ['src/index.ts'],
 })
