@@ -1,11 +1,27 @@
 import { detect } from '@antfu/ni'
 import { execaCommand } from 'execa'
 import { isPackageExists } from 'local-pkg'
-import type { PartialPick } from 'm-type-tools'
 
-export async function installPkgInWatchDirs(
-	dirs: string[]
-) {}
+interface GetPackageMangerNameOptions {
+	cwd?: string
+	autoInstallPkgManager?: boolean
+}
+
+export async function getPackageMangerName(
+	options?: GetPackageMangerNameOptions
+) {
+	const {
+		cwd = process.cwd(),
+		autoInstallPkgManager = true
+	} = options || {}
+
+	const packageMangerName = await detect({
+		cwd,
+		autoInstall: autoInstallPkgManager
+	})
+
+	return packageMangerName
+}
 
 interface InstallPkgOptions {
 	name: string
@@ -41,25 +57,4 @@ export async function installPkg(
 		stdio: 'inherit',
 		encoding: 'utf-8'
 	})
-}
-
-type GetPackageMangerNameOptions = PartialPick<
-	InstallPkgOptions,
-	'cwd' | 'autoInstallPkgManager'
->
-
-export async function getPackageMangerName(
-	options?: GetPackageMangerNameOptions
-) {
-	const {
-		cwd = process.cwd(),
-		autoInstallPkgManager = true
-	} = options || {}
-
-	const packageMangerName = await detect({
-		cwd,
-		autoInstall: autoInstallPkgManager
-	})
-
-	return packageMangerName
 }

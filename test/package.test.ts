@@ -4,16 +4,16 @@ import { describe, expect, it } from 'vitest'
 import {
 	installPkg,
 	getPackageMangerName
-} from '../src/install'
+} from '../src/package'
 
-describe('install', () => {
+describe('package', () => {
 	const packageMangers = ['npm', 'yarn', 'pnpm']
 
 	it('getPackageMangerName', async () => {
 		const getPackageMangerNamePromises = packageMangers.map(
 			async p => {
 				return await getPackageMangerName({
-					cwd: resolve(__dirname, './fixture/install/' + p)
+					cwd: resolve(__dirname, './fixture/package/' + p)
 				})
 			}
 		)
@@ -29,7 +29,7 @@ describe('install', () => {
 			async p => {
 				return await installPkg({
 					name: 'koa',
-					cwd: resolve(__dirname, './fixture/install/' + p)
+					cwd: resolve(__dirname, './fixture/package/' + p)
 				})
 			}
 		)
@@ -40,7 +40,7 @@ describe('install', () => {
 			expect(
 				isPackageExists('koa', {
 					paths: [
-						resolve(__dirname, './fixture/install/' + p)
+						resolve(__dirname, './fixture/package/' + p)
 					]
 				})
 			).toBe(true)

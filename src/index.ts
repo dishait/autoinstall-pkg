@@ -1,3 +1,3 @@
 export * from './path'
 export * from './scan'
-export * from './install'
+export * from './auto'
