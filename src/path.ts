@@ -12,11 +12,15 @@ export const pathToPkg = (path: string) => {
 	if (path.startsWith('.') || path.startsWith('..')) {
 		return null
 	}
+
 	path = normalizedSlash(path)
 
-	path = path.split(/\//)[0]
+	// 可能是命名空间包
+	if (path.startsWith('@')) {
+		return path
+	}
 
-	return path
+	return path.split(/\//)[0]
 }
 
 export const pathToNoBuiltinPkg = (path: string) => {

@@ -57,22 +57,11 @@ describe('path', () => {
 		expect(
 			pathToPkg('../examples/foo')
 		).toMatchInlineSnapshot('null')
-	})
 
-	it('pathToPkg', () => {
-		// node 模块
-		expect(pathToPkg(`fs`)).toMatchInlineSnapshot('"fs"')
-
-		// 第三方模块
-		expect(pathToPkg(`foo`)).toMatchInlineSnapshot('"foo"')
-		expect(pathToPkg(`foo/bar`)).toMatchInlineSnapshot(
-			'"foo"'
+		// 命名空间包
+		expect(pathToPkg('@antfu/ni')).toMatchInlineSnapshot(
+			'"@antfu/ni"'
 		)
-
-		// 相对路径返回空
-		expect(
-			pathToPkg('../examples/foo')
-		).toMatchInlineSnapshot('null')
 	})
 
 	it('pathToNoBuiltinPkg', () => {
@@ -97,5 +86,10 @@ describe('path', () => {
 		expect(
 			pathToNoBuiltinPkg(`./examples/foo`)
 		).toMatchInlineSnapshot('null')
+
+		// 命名空间包
+		expect(
+			pathToNoBuiltinPkg('@antfu/ni')
+		).toMatchInlineSnapshot('"@antfu/ni"')
 	})
 })
