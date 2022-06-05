@@ -28,6 +28,7 @@
 		"test:watch": "vitest --watch",
 		"coverage": "vitest --coverage",
 		"prepublishOnly": "npm run build",
+		"play:demo": "esno example/auto.ts",
 		"build:cjs": "mkdist -d --format=cjs",
 		"build:watch": "npm run build -- --watch src",
 		"release": "bumpp --commit --push --tag && npm publish"
@@ -63,7 +64,6 @@
 		"@antfu/ni": "^0.16.2",
 		"chokidar": "^3.5.3",
 		"local-pkg": "^0.4.1",
-		"m-type-tools": "^0.1.0",
 		"mlly": "^0.5.2"
 	}
 }

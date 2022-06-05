@@ -1,10 +1,27 @@
+import { resolve } from 'path'
 import { watch } from 'chokidar'
 import { installPkg } from './package'
 import { scanNoBuiltinPkg } from './scan'
 
 interface AutoInstallPkgOptions {
+	/**
+	 * @default process.cwd()
+	 */
 	cwd?: string
+	/**
+	 * @TODO
+	 * @default true
+	 */
+	autoUninstall?: boolean
+	/**
+	 * 当包管理器不存在时，自动安装
+	 * @default true
+	 */
 	autoInstallPkgManager?: boolean
+	/**
+	 * 路径
+	 * @default "src/**\\/*.ts"
+	 */
 	paths: string | readonly string[]
 }
 
@@ -16,12 +33,16 @@ export async function autoInstallPkg(
 		cwd = process.cwd(),
 		autoInstallPkgManager = true
 	} = options
-	const watcher = watch(paths)
+
+	const watcher = watch(paths, {
+		cwd,
+		ignoreInitial: false
+	})
 
 	const cache = new Set<string>()
 
-	watcher.on('change', async path => {
-		const pkgs = await scanNoBuiltinPkg(path)
+	const install = async (path: string) => {
+		const pkgs = await scanNoBuiltinPkg(resolve(cwd, path))
 
 		for (const pkg of pkgs) {
 			if (!cache.has(pkg)) {
@@ -33,5 +54,9 @@ export async function autoInstallPkg(
 			}
 		}
 		pkgs.forEach(pkg => cache.add(pkg))
-	})
+	}
+
+	watcher.on('add', install)
+
+	watcher.on('change', install)
 }

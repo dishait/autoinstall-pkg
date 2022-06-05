@@ -2,8 +2,11 @@
 	"name": "examples",
 	"version": "1.0.0",
 	"main": "index.js",
-	"scripts": {},
 	"devDependencies": {
 		"autoinstall-pkg": "workspace:*"
+	},
+	"dependencies": {
+		"express": "^4.18.1",
+		"koa": "^2.13.4"
 	}
 }
