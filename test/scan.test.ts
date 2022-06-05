@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest'
 describe('scan', () => {
 	it('scanStaticImports', async () => {
 		const result = await scanStaticImports(
-			'test/fixture/foo.ts'
+			'test/fixture/scan/foo.ts'
 		)
 		expect(result).toMatchInlineSnapshot(`
 			[
@@ -62,7 +62,7 @@ describe('scan', () => {
 
 	it('scanNoBuiltinPkg', async () => {
 		const result = await scanNoBuiltinPkg(
-			'test/fixture/foo.ts'
+			'test/fixture/scan/foo.ts'
 		)
 
 		expect(result).toMatchInlineSnapshot(`
