@@ -6,10 +6,13 @@ export function debounce<T extends AnyFunction>(
 ) {
 	let timeout: NodeJS.Timeout
 
-	return function (...rest: Parameters<T>) {
+	return function (
+		this: ThisParameterType<T>,
+		...rest: Parameters<T>
+	) {
 		clearTimeout(timeout)
 		timeout = setTimeout(() => {
-			fn.apply(rest)
+			fn.apply(this, rest)
 		}, delay)
 	} as T
 }
