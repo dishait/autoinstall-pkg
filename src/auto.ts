@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import { watch } from 'chokidar'
+import { debounce } from './shared'
 import { installPkg } from './package'
 import { scanNoBuiltinPkg } from './scan'
 
@@ -56,7 +57,9 @@ export async function autoInstallPkg(
 		pkgs.forEach(pkg => cache.add(pkg))
 	}
 
-	watcher.on('add', install)
+	const debouncedInstall = debounce(install, 1000)
 
-	watcher.on('change', install)
+	watcher.on('add', debouncedInstall)
+
+	watcher.on('change', debouncedInstall)
 }
