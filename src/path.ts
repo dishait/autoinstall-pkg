@@ -8,11 +8,11 @@ export const normalizedSlash = (path: string) =>
 	slash(normalize(path))
 
 export const pathToPkg = (path: string) => {
-	path = normalizedSlash(path)
 	// 相对路径时直接退出
 	if (path.startsWith('.') || path.startsWith('..')) {
 		return null
 	}
+	path = normalizedSlash(path)
 
 	path = path.split(/\//)[0]
 

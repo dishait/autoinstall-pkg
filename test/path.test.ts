@@ -30,6 +30,14 @@ describe('path', () => {
 		).toMatchInlineSnapshot(
 			'"D:/Code/Work/autoinstall-pkg/test/path.test.ts"'
 		)
+
+		// 相对路径
+		expect(
+			normalizedSlash(`../examples`)
+		).toMatchInlineSnapshot('"../examples"')
+		expect(
+			normalizedSlash(`./examples`)
+		).toMatchInlineSnapshot('"examples"')
 	})
 
 	it('pathToPkg', () => {
@@ -42,6 +50,10 @@ describe('path', () => {
 		)
 
 		// 相对路径返回空
+		expect(
+			pathToPkg('./examples/foo')
+		).toMatchInlineSnapshot('null')
+
 		expect(
 			pathToPkg('../examples/foo')
 		).toMatchInlineSnapshot('null')
@@ -80,6 +92,10 @@ describe('path', () => {
 		// 相对路径
 		expect(
 			pathToNoBuiltinPkg(`../examples/foo`)
+		).toMatchInlineSnapshot('null')
+
+		expect(
+			pathToNoBuiltinPkg(`./examples/foo`)
 		).toMatchInlineSnapshot('null')
 	})
 })
