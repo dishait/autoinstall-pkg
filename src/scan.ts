@@ -21,5 +21,5 @@ export async function scanNoBuiltinPkg(path: string) {
 		.map(imports => imports.specifier)
 		.filter(specifier => pathToNoBuiltinPkg(specifier))
 
-	return pkgs
+	return Array.from(new Set(pkgs))
 }

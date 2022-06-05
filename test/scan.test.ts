@@ -21,30 +21,39 @@ describe('scan', () => {
 			    "type": "static",
 			  },
 			  {
-			    "code": "import Test from 'express'
+			    "code": "import 'express'
 			",
-			    "end": 57,
-			    "imports": "Test ",
+			    "end": 47,
+			    "imports": undefined,
 			    "specifier": "express",
 			    "start": 29,
 			    "type": "static",
 			  },
 			  {
+			    "code": "import Test from 'express'
+			",
+			    "end": 90,
+			    "imports": "Test ",
+			    "specifier": "express",
+			    "start": 62,
+			    "type": "static",
+			  },
+			  {
 			    "code": "import { foo3 } from './foo3'
 			",
-			    "end": 88,
+			    "end": 121,
 			    "imports": "{ foo3 } ",
 			    "specifier": "./foo3",
-			    "start": 57,
+			    "start": 90,
 			    "type": "static",
 			  },
 			  {
 			    "code": "import { foo2 } from './foo2'
 			",
-			    "end": 119,
+			    "end": 152,
 			    "imports": "{ foo2 } ",
 			    "specifier": "./foo2",
-			    "start": 88,
+			    "start": 121,
 			    "type": "static",
 			  },
 			]
