@@ -24,12 +24,17 @@ interface AutoInstallPkgOptions {
 	 * @default "src/**\\/*.ts"
 	 */
 	paths: string | readonly string[]
+	/**
+	 * 安装回调
+	 */
+	onInstalling?: (pkg: string) => void
 }
 
 export async function autoInstallPkg(
 	options: AutoInstallPkgOptions
 ) {
 	const {
+		onInstalling,
 		paths = 'src',
 		cwd = process.cwd(),
 		autoInstallPkgManager = true
@@ -47,6 +52,9 @@ export async function autoInstallPkg(
 
 		for (const pkg of pkgs) {
 			if (!cache.has(pkg)) {
+				if (onInstalling) {
+					onInstalling(pkg)
+				}
 				await installPkg({
 					cwd,
 					name: pkg,
