@@ -5,6 +5,9 @@
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
+	"bin": {
+		"aip": "./dist/cli.js"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/dishait/autoinstall-pkg.git"
@@ -25,6 +28,7 @@
 		"build:esm": "mkdist -d",
 		"test:update": "vitest -u",
 		"play": "esno src/index.ts",
+		"play:cli": "esno src/cli.ts",
 		"test:watch": "vitest --watch",
 		"coverage": "vitest --coverage",
 		"prepublishOnly": "npm run build",
@@ -63,6 +67,7 @@
 	},
 	"dependencies": {
 		"@antfu/ni": "^0.16.2",
+		"cac": "^6.7.12",
 		"chokidar": "^3.5.3",
 		"local-pkg": "^0.4.1",
 		"mlly": "^0.5.2"

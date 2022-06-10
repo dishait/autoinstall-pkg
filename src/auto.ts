@@ -35,7 +35,7 @@ export async function autoInstallPkg(
 ) {
 	const {
 		onInstalling,
-		paths = 'src',
+		paths = 'src/**/*.ts',
 		cwd = process.cwd(),
 		autoInstallPkgManager = true
 	} = options
