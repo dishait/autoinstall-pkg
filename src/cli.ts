@@ -18,8 +18,8 @@ cli
 	)
 	.action((paths, options) => {
 		autoInstallPkg({
-			paths,
 			cwd: options.cwd,
+			paths: paths.length ? paths : 'src/**/*.ts',
 			autoInstallPkgManager: options.autoInstallPkgManager
 		})
 	})
