@@ -7,6 +7,7 @@
 ## features 🦕
 
 - 支持 `esmodule` 模块
+- 支持 `npm`，`yarn` 和 `pnpm` 管理器
 
 <br />
 <br />
