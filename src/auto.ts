@@ -31,14 +31,14 @@ interface AutoInstallPkgOptions {
 }
 
 export async function autoInstallPkg(
-	options: AutoInstallPkgOptions
+	options?: AutoInstallPkgOptions
 ) {
 	const {
 		onInstalling,
 		paths = 'src/**/*.ts',
 		cwd = process.cwd(),
 		autoInstallPkgManager = true
-	} = options
+	} = options || {}
 
 	const watcher = watch(paths, {
 		cwd,
